@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ProfileService" targetNamespace="http://www.pratsam.org/ns/profile/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.pratsam.org/ns/profile/">
+
+	<types>
+
+		<xs:schema targetNamespace="http://www.pratsam.org/ns/profile/" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+			<xs:complexType name="packageListType">
+				<xs:sequence>
+					<xs:element name="name" type="xs:string"/>
+					<xs:element name="description" type="xs:string"/>
+					<xs:element name="version" type="xs:string"/>				
+                    <xs:element name="packages" type="tns:packagesType"/>
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="packagesType">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="unbounded" name="package" type="tns:packageType"/>
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:complexType name="packageType">
+				<xs:sequence>
+					<xs:element name="description" type="xs:string"/>
+					<xs:element name="id" type="xs:string"/>
+					<xs:element name="md5sum" type="xs:string"/>
+					<xs:element name="type" type="xs:string"/>
+					<xs:element name="name" type="xs:string"/>
+					<xs:element name="size" type="xs:integer"/>
+					<xs:element name="uri" type="xs:anyURI"/>
+				</xs:sequence>
+			</xs:complexType>
+
+			
+			<xs:element name="logOn" type="tns:logOnType"/>
+			
+			<xs:complexType name="logOnType">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="1" name="username" type="xs:string"/>
+					<xs:element minOccurs="1" maxOccurs="1" name="password" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+		
+
+			<xs:element name="logOnResponse" type="tns:logOnResponseType"/>
+			
+			<xs:complexType name="logOnResponseType">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="1" name="logOnResult" type="xs:boolean"/>
+				</xs:sequence>
+			</xs:complexType>
+
+		
+			<xs:element name="logOff" type="tns:logOffType"/>
+			<xs:complexType name="logOffType"/>
+
+		
+			<xs:element name="logOffResponse" type="tns:logOffResponseType"/>
+
+			<xs:complexType name="logOffResponseType">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="1" name="logOffResult" type="xs:boolean"/>
+				</xs:sequence>
+			</xs:complexType>
+
+		
+			<xs:element name="queryPackageList" type="tns:queryPackageListType"/>
+			
+			<xs:complexType name="queryPackageListType">
+				<xs:sequence>
+					<xs:element minOccurs="1" maxOccurs="1" name="firmwareType" type="xs:string"/>
+					<xs:element minOccurs="1" maxOccurs="1" name="firmwareVersion" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>	
+
+
+			<xs:element name="queryPackageListResponse" type="tns:queryPackageListResponseType"/>
+			
+			<xs:complexType name="queryPackageListResponseType">
+				<xs:sequence>
+					<xs:element name="packageListResult" type="tns:packageListType"/>
+				</xs:sequence>
+			</xs:complexType>
+
+			
+			<xs:element name="getAttribute" type="tns:getAttributeType"/>
+
+			<xs:complexType name="getAttributeType">
+				<xs:sequence>
+					<xs:element name="key" type="xs:string" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:element name="getAttributeResponse" type="tns:getAttributeResponseType"/>
+			
+			<xs:complexType name="getAttributeResponseType">
+				<xs:sequence>
+					<xs:element name="getAttributeResult" type="xs:string" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:element name="setAttribute" type="tns:setAttributeType"/>
+
+			<xs:complexType name="setAttributeType">
+				<xs:sequence>
+					<xs:element name="key" minOccurs="1" maxOccurs="1" type="xs:string"/>
+					<xs:element name="value" minOccurs="1" maxOccurs="1" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			
+			<xs:element name="setAttributeResponse" type="tns:setAttributeResultType"/>
+	
+			<xs:complexType name="setAttributeResultType">
+				<xs:sequence>
+					<xs:element name="setAttributeResult" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>	
+			
+			<xs:element name="internalServerErrorFault" type="tns:internalServerErrorFaultType"/>
+		
+			<xs:complexType name="internalServerErrorFaultType">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="reason" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+	
+			
+			<xs:element name="invalidParameterFault" type="tns:invalidParameterFaultType"/>
+	
+			<xs:complexType name="invalidParameterFaultType">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="reason" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+	
+			<xs:element name="noActiveSessionFault" type="tns:noActiveSessionFaultType"/>
+	
+			<xs:complexType name="noActiveSessionFaultType">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="reason" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+		
+		</xs:schema>
+	
+	</types>
+
+	
+
+	<message name="logOn_inputMessage">
+		<part name="parameters" element="tns:logOn"/>
+	</message>
+
+	<message name="logOn_outputMessage">
+		<part name="parameters" element="tns:logOnResponse"/>
+	</message>
+
+	<message name="logOff_inputMessage">
+		<part name="parameters" element="tns:logOff"/>
+	</message>
+
+	<message name="logOff_outputMessage">
+		<part name="parameters" element="tns:logOffResponse"/>
+	</message>
+	
+	<message name="setAttribute_inputMessage">
+		<part name="parameters" element="tns:setAttribute"/>
+	</message>
+
+	<message name="setAttribute_outputMessage">
+		<part name="parameters" element="tns:setAttributeResponse"/>
+	</message>
+	
+	<message name="getAttribute_inputMessage">
+		<part name="parameters" element="tns:getAttribute"/>
+	</message>
+
+	<message name="getAttribute_outputMessage">
+		<part name="parameters" element="tns:getAttributeResponse"/>
+	</message>
+
+	<message name="queryPackageList_inputMessage">
+		<part name="parameters" element="tns:queryPackageList"/>
+	</message>
+	
+	<message name="queryPackageList_outputMessage">
+		<part name="parameters" element="tns:queryPackageListResponse"/>
+	</message>
+
+	<message name="internalServerErrorFault_message">
+		<part name="fault" element="tns:internalServerErrorFault"/>
+	</message>
+
+	<message name="noActiveSessionFault_message">
+		<part name="fault" element="tns:noActiveSessionFault"/>
+	</message>
+
+	<message name="invalidParameterFault_message">
+		<part name="fault" element="tns:invalidParameterFault"/>
+	</message>
+
+
+	<portType name="profile">
+
+		<operation name="logOn">
+			
+			<input message="tns:logOn_inputMessage"/>
+			<output message="tns:logOn_outputMessage"/>
+			<fault name="internalServerErrorFault" message="tns:internalServerErrorFault_message"/>
+			<fault name="invalidParameterFault" message="tns:invalidParameterFault_message"/>
+		</operation>
+
+		<operation name="logOff">
+			
+			<input message="tns:logOff_inputMessage"/>
+			<output message="tns:logOff_outputMessage"/>
+			<fault name="internalServerErrorFault" message="tns:internalServerErrorFault_message"/>
+			<fault name="noActiveSessionFault" message="tns:noActiveSessionFault_message"/>
+		</operation>
+		
+		<operation name="setAttribute">
+		
+			<input message="tns:setAttribute_inputMessage"/>
+			<output message="tns:setAttribute_outputMessage"/>
+			<fault name="internalServerErrorFault" message="tns:internalServerErrorFault_message"/>
+			<fault name="noActiveSessionFault" message="tns:noActiveSessionFault_message"/>
+			<fault name="invalidParameterFault" message="tns:invalidParameterFault_message"/>
+		</operation>
+		
+		<operation name="getAttribute">
+		
+			<input message="tns:getAttribute_inputMessage"/>
+			<output message="tns:getAttribute_outputMessage"/>
+			<fault name="internalServerErrorFault" message="tns:internalServerErrorFault_message"/>
+			<fault name="noActiveSessionFault" message="tns:noActiveSessionFault_message"/>
+			<fault name="invalidParameterFault" message="tns:invalidParameterFault_message"/>
+		</operation>
+
+		<operation name="queryPackageList">
+		
+			<input message="tns:queryPackageList_inputMessage"/>
+			<output message="tns:queryPackageList_outputMessage"/>
+			<fault name="internalServerErrorFault" message="tns:internalServerErrorFault_message"/>
+			<fault name="noActiveSessionFault" message="tns:noActiveSessionFault_message"/>
+			<fault name="invalidParameterFault" message="tns:invalidParameterFault_message"/>
+		</operation>
+	</portType>
+
+
+	<binding name="ProfileService" type="tns:profile">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		
+		<operation name="logOn">
+			<soap:operation soapAction="/logOn" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="internalServerErrorFault">
+				<soap:fault use="literal" name="internalServerErrorFault"/>
+			</fault>
+                        <fault name="invalidParameterFault">
+                                <soap:fault use="literal" name="invalidParameterFault"/>
+                        </fault>
+		</operation>
+		
+		<operation name="logOff">
+			<soap:operation soapAction="/logOff" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="internalServerErrorFault">
+				<soap:fault use="literal" name="internalServerErrorFault"/>
+			</fault>
+			<fault name="noActiveSessionFault">
+				<soap:fault use="literal" name="noActiveSessionFault"/>
+			</fault>
+		</operation>
+		
+		<operation name="setAttribute">
+			<soap:operation soapAction="/setAttribute" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="internalServerErrorFault">
+				<soap:fault use="literal" name="internalServerErrorFault"/>
+			</fault>
+			<fault name="noActiveSessionFault">
+				<soap:fault use="literal" name="noActiveSessionFault"/>
+			</fault>
+                        <fault name="invalidParameterFault">
+                                <soap:fault use="literal" name="invalidParameterFault"/>
+                        </fault>
+		</operation>
+		
+		<operation name="getAttribute">
+			<soap:operation soapAction="/getAttribute" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="internalServerErrorFault">
+				<soap:fault use="literal" name="internalServerErrorFault"/>
+			</fault>
+			<fault name="noActiveSessionFault">
+				<soap:fault use="literal" name="noActiveSessionFault"/>
+			</fault>
+                        <fault name="invalidParameterFault">
+                                <soap:fault use="literal" name="invalidParameterFault"/>
+                        </fault>
+		</operation>
+		
+		<operation name="queryPackageList">
+			<soap:operation soapAction="/queryPackageList" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="internalServerErrorFault">
+				<soap:fault use="literal" name="internalServerErrorFault"/>
+			</fault>
+			<fault name="noActiveSessionFault">
+				<soap:fault use="literal" name="noActiveSessionFault"/>
+                        </fault>
+                        <fault name="invalidParameterFault">
+                                <soap:fault use="literal" name="invalidParameterFault"/>
+                        </fault>
+		</operation>
+	
+	</binding>
+	
+	<service name="Kolibre_Profile">
+		<port name="HTTP" binding="tns:ProfileService">
+			<soap:address location="SERVICE_WSDL_URI_PLACEHOLDER"/>
+		</port>
+	</service>
+</definitions>

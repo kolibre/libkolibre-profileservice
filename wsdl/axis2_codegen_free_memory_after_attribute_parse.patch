@@ -1,0 +1,12 @@
+Index: modules/adb-codegen/src/org/apache/axis2/schema/template/CADBBeanTemplateSource.xsl
+===================================================================
+--- modules/adb-codegen/src/org/apache/axis2/schema/template/CADBBeanTemplateSource.xsl	(revision 1153421)
++++ modules/adb-codegen/src/org/apache/axis2/schema/template/CADBBeanTemplateSource.xsl	(working copy)
+@@ -1376,6 +1376,7 @@
+                            </xsl:choose>
+                                {
+                                    parent_attri = (axiom_attribute_t*)val;
++                                   AXIS2_FREE(env->allocator, hi);
+                                    break;
+                                }
+                        }

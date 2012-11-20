@@ -1,0 +1,29 @@
+--- a/axis2_stub_Kolibre_Profile.c
++++ b/axis2_stub_Kolibre_Profile.c
+@@ -470,7 +470,7 @@
+                     }
+                 }
+                 AXIS2_ERROR_SET(env->error, env->error->error_number, AXIS2_FAILURE);
+-                return NULL;
++                return (axis2_bool_t)NULL;
+              }
+             
+                     if ( NULL == ret_node )
+@@ -766,7 +766,7 @@
+                     }
+                 }
+                 AXIS2_ERROR_SET(env->error, env->error->error_number, AXIS2_FAILURE);
+-                return NULL;
++                return (axis2_bool_t)NULL;
+              }
+             
+                     if ( NULL == ret_node )
+@@ -1024,7 +1024,7 @@
+                     }
+                 }
+                 AXIS2_ERROR_SET(env->error, env->error->error_number, AXIS2_FAILURE);
+-                return NULL;
++                return (axis2_bool_t)NULL;
+              }
+             
+                     if ( NULL == ret_node )

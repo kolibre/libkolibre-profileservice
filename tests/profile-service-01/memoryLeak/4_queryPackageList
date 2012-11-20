@@ -1,0 +1,20 @@
+POST /profile/service.php HTTP/1.1
+Host: localhost:8888
+User-Agent: Axis2C/1.6.0
+SOAPAction: "/queryPackageList"
+Content-Length: 373
+Content-Type: text/xml;charset=UTF-8
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><n:queryPackageList xsi:type="queryPackageListType" xmlns:xsi="http://www.pratsam.org/ns/profile/" xmlns:n="http://www.pratsam.org/ns/profile/"><n:firmwareType>Type</n:firmwareType><n:firmwareVersion>Version</n:firmwareVersion></n:queryPackageList></soapenv:Body></soapenv:Envelope>
+
+HTTP/1.1 200 OK
+Date: Thu, 08 Sep 2011 12:44:19 GMT
+Server: Apache/2.2.9 (Debian) PHP/5.2.6-1+lenny13 with Suhosin-Patch mod_ssl/2.2.9 OpenSSL/0.9.8g mod_perl/2.0.4 Perl/v5.10.0
+X-Powered-By: PHP/5.2.6-1+lenny13
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Content-Length: 1479
+Content-Type: text/xml; charset=utf-8
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://www.pratsam.org/ns/profile/"><SOAP-ENV:Body><ns1:queryPackageListResponse><ns1:packageListResult><ns1:name>name</ns1:name><ns1:description>description</ns1:description><ns1:version>version</ns1:version><ns1:packages><ns1:package><ns1:description>Package description 1</ns1:description><ns1:id>1</ns1:id><ns1:md5sum>767d5bcee11819c46a185c395c228b57</ns1:md5sum><ns1:type>tgz</ns1:type><ns1:name>modules</ns1:name><ns1:size>439207</ns1:size><ns1:uri>http://user:pass@localhost/profile/firmware/download/767d5bcee11819c46a185c395c228b57</ns1:uri></ns1:package><ns1:package><ns1:description>Package description 2</ns1:description><ns1:id>2</ns1:id><ns1:md5sum>3987f12e94feafcfdeba14c77db2f5de</ns1:md5sum><ns1:type>pkg</ns1:type><ns1:name>modules</ns1:name><ns1:size>117744</ns1:size><ns1:uri>http://user:pass@localhost/profile/firmware/download/3987f12e94feafcfdeba14c77db2f5de</ns1:uri></ns1:package><ns1:package><ns1:description>Package descrition 3</ns1:description><ns1:id>3</ns1:id><ns1:md5sum>5e8093cc868677b711b8f8754cecec19</ns1:md5sum><ns1:type>zip</ns1:type><ns1:name>modules</ns1:name><ns1:size>17854</ns1:size><ns1:uri>http://user:pass@localhost/profile/firmware/download/5e8093cc868677b711b8f8754cecec19</ns1:uri></ns1:package></ns1:packages></ns1:packageListResult></ns1:queryPackageListResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>

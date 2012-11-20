@@ -1,0 +1,20 @@
+POST /profile/service.php HTTP/1.1
+Host: locahost:88888
+User-Agent: Axis2C/1.6.0
+SOAPAction: "/setAttribute"
+Content-Length: 317
+Content-Type: text/xml;charset=UTF-8
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><n:setAttribute xsi:type="setAttributeType" xmlns:xsi="http://www.pratsam.org/ns/profile/" xmlns:n="http://www.pratsam.org/ns/profile/"><n:key>foo</n:key><n:value>bar</n:value></n:setAttribute></soapenv:Body></soapenv:Envelope>
+
+HTTP/1.1 500 Internal Service Error
+Date: Tue, 30 Aug 2011 09:14:18 GMT
+Server: Apache/2.2.9 (Debian) PHP/5.2.6-1+lenny13 with Suhosin-Patch mod_ssl/2.2.9 OpenSSL/0.9.8g mod_perl/2.0.4 Perl/v5.10.0
+X-Powered-By: PHP/5.2.6-1+lenny13
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Content-Length: 400
+Content-Type: text/xml; charset=utf-8
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://www.pratsam.org/ns/profile/"><SOAP-ENV:Body><SOAP-ENV:Fault><faultcode>SOAP-ENV:Client</faultcode><faultstring>No Active Session</faultstring><faultactor></faultactor><detail><ns1:noActiveSessionFault/></detail></SOAP-ENV:Fault></SOAP-ENV:Body></SOAP-ENV:Envelope>

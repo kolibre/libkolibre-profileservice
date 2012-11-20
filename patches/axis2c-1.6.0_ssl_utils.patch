@@ -1,0 +1,12 @@
+--- src/core/transport/http/sender/ssl/ssl_utils.c.orig
++++ src/core/transport/http/sender/ssl/ssl_utils.c
+@@ -41,7 +41,7 @@
+     axis2_char_t * key_file,
+     axis2_char_t * ssl_pp)
+ {
+-    SSL_METHOD *meth = NULL;
++    const SSL_METHOD *meth = NULL;
+     SSL_CTX *ctx = NULL;
+     axis2_char_t *ca_file = server_cert;
+ 
+

@@ -1,0 +1,26 @@
+Index: modules/adb-codegen/src/org/apache/axis2/schema/template/CADBBeanTemplateSource.xsl
+===================================================================
+--- modules/adb-codegen/src/org/apache/axis2/schema/template/CADBBeanTemplateSource.xsl	(revision 1398758)
++++ modules/adb-codegen/src/org/apache/axis2/schema/template/CADBBeanTemplateSource.xsl	(working copy)
+@@ -4133,6 +4144,10 @@
+                         element_ns = axiom_namespace_create(env, "http://www.w3.org/2001/XMLSchema-instance",
+                                                             xsi_prefix);
+                         axiom_element_declare_namespace_assume_param_ownership(parent_element, env, element_ns);
++                        if(element_ns)
++                        {
++                            axiom_namespace_free(element_ns, env);
++                        }
+                   }
+               }
+               type_attrib = axutil_strcat(env, " ", xsi_prefix, ":type=\"<xsl:value-of select="$type_name"/>\"", NULL);
+@@ -4163,6 +4178,10 @@
+                         element_ns = axiom_namespace_create(env, "http://www.w3.org/2001/XMLSchema-instance",
+                                                             xsi_prefix);
+                         axiom_element_declare_namespace_assume_param_ownership(parent_element, env, element_ns);
++                        if(element_ns)
++                        {
++                            axiom_namespace_free(element_ns, env);
++                        }
+                   }
+               }
+             }

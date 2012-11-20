@@ -1,0 +1,64 @@
+Index: modules/codegen/src/org/apache/axis2/wsdl/template/c/StubSourceTemplate.xsl
+===================================================================
+--- modules/codegen/src/org/apache/axis2/wsdl/template/c/StubSourceTemplate.xsl	(revision 1406109)
++++ modules/codegen/src/org/apache/axis2/wsdl/template/c/StubSourceTemplate.xsl	(working copy)
+@@ -402,6 +406,38 @@
+                 }
+                 if (soap_fault)
+                 {
++                    axis2_char_t *soap_reason_text = NULL;
++                    axiom_node_t *soap_fault_base_node = NULL;
++
++                    soap_fault_base_node = axiom_soap_fault_get_base_node(soap_fault, env);
++
++                    if (soap_fault_base_node)
++                    {
++                        axiom_node_t *current_node = NULL;
++                        axis2_char_t *current_local_name = NULL;
++                        axiom_element_t *current_element = NULL;
++                        axis2_bool_t next_sibling = AXIS2_FALSE;
++
++                        current_node = axiom_node_get_first_child(soap_fault_base_node, env);
++
++                        while(axutil_strcmp(current_local_name, "faultstring"))
++                        {
++                            while(current_node &amp;&amp; axiom_node_get_node_type(current_node, env) != AXIOM_ELEMENT || next_sibling == AXIS2_TRUE)
++                            {
++                                current_node = axiom_node_get_next_sibling(current_node, env);
++                                next_sibling = AXIS2_FALSE;
++                            }
++                            current_element = (axiom_element_t*)axiom_node_get_data_element(current_node, env);
++                            current_local_name = axiom_element_get_localname(current_element, env);
++                            next_sibling = AXIS2_TRUE;
++                        }
++
++                        if(current_element)
++                        {
++                            soap_reason_text = axiom_element_get_text(current_element, env, current_node);
++                        }
++                    }
++
+                     axiom_soap_fault_detail_t *soap_detail = NULL;
+                     axiom_node_t *soap_detail_node = NULL;
+ 
+@@ -451,8 +487,19 @@
+                             adb_obj = <xsl:value-of select="substring-before(@type, '_t*')"/>_create(env);
+                             if(adb_obj)
+                             {
+-                                if(<xsl:value-of select="substring-before(@type, '_t*')"/>_deserialize(adb_obj, env, &amp;soap_detail_node, NULL, AXIS2_FALSE ) == AXIS2_FAILURE)
++                                if(soap_reason_text)
+                                 {
++                                    <xsl:value-of select="substring-before(@type, '_t*')"/>Type_t *faultType = <xsl:value-of select="substring-before(@type, '_t*')"/>Type_create_with_values(env, soap_reason_text);
++                                    if(faultType)
++                                    {
++                                        <xsl:value-of select="substring-before(@type, '_t*')"/>_set_<xsl:value-of select="@localname"/>(adb_obj, env, faultType);
++                                    }
++                                    else {
++                                        AXIS2_ERROR_SET(env->error, AXIS2_ERROR_NO_MEMORY, AXIS2_FAILURE);
++                                    }
++                                }
++                                else if(<xsl:value-of select="substring-before(@type, '_t*')"/>_deserialize(adb_obj, env, &amp;soap_detail_node, NULL, AXIS2_FALSE ) == AXIS2_FAILURE)
++                                {
+                                     <xsl:value-of select="substring-before(@type, '_t*')"/>_free(adb_obj, env);
+                                 }
+                                

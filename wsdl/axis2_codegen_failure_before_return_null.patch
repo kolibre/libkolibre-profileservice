@@ -1,0 +1,20 @@
+Index: modules/codegen/src/org/apache/axis2/wsdl/template/c/StubSourceTemplate.xsl
+===================================================================
+--- modules/codegen/src/org/apache/axis2/wsdl/template/c/StubSourceTemplate.xsl	(revision 1153421)
++++ modules/codegen/src/org/apache/axis2/wsdl/template/c/StubSourceTemplate.xsl	(working copy)
+@@ -465,6 +465,7 @@
+             </xsl:for-each>
+                     }
+                 }
++                AXIS2_ERROR_SET(env->error, env->error->error_number, AXIS2_FAILURE);
+                 return NULL;
+              }
+             </xsl:if> 
+@@ -586,6 +587,7 @@
+                 <xsl:when test="output/param/@ours">
+                     if ( NULL == ret_node )
+                     {
++                        AXIS2_ERROR_SET(env->error, env->error->error_number, AXIS2_FAILURE);
+                         return (<xsl:value-of select="$outputtype"/>)NULL;
+                     }
+                     ret_val = <xsl:value-of select="substring-before(output/param/@type, '_t*')"/>_create(env);

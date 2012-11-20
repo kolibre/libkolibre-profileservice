@@ -1,0 +1,12 @@
+Index: modules/codegen/src/org/apache/axis2/wsdl/template/c/StubSourceTemplate.xsl
+===================================================================
+--- modules/codegen/src/org/apache/axis2/wsdl/template/c/StubSourceTemplate.xsl	(revision 1153421)
++++ modules/codegen/src/org/apache/axis2/wsdl/template/c/StubSourceTemplate.xsl	(working copy)
+@@ -599,6 +599,7 @@
+ 
+                         AXIS2_LOG_ERROR( env->log, AXIS2_LOG_SI, "NULL returnted from the <xsl:value-of select="substring-before(output/param/@type, '_t*')"/>_deserialize: "
+                                                                 "This should be due to an invalid XML");
++                        AXIS2_ERROR_SET(env->error, AXIS2_ERROR_NO_SUCH_ELEMENT, AXIS2_FAILURE);
+                         return (<xsl:value-of select="$outputtype"/>)NULL;
+                     }
+ 

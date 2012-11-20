@@ -1,0 +1,225 @@
+{
+   openssl-rand-write
+   Memcheck:Param
+   write(buf)
+   fun:__write_nocancel
+   fun:BIO_write
+   fun:ssl23_write_bytes
+   fun:ssl23_connect
+   fun:SSL_connect
+   fun:ossl_connect_common
+}
+{
+   openssl-rand-write2
+   Memcheck:Param
+   write(buf)
+   fun:__write_nocancel
+   fun:BIO_write
+   fun:ssl3_write_pending
+   obj:/lib/i686/cmov/libssl.so.0.9.8
+   fun:ssl3_write_bytes
+   fun:ssl3_write
+   fun:SSL_write
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   ...
+   obj:/usr/lib/i686/cmov/libssl.so.0.9.8
+   ...
+}
+{
+   openssl-rand-write3
+   Memcheck:Param
+   write(buf)
+   fun:__write_nocancel
+   fun:BIO_write
+   ...
+   fun:ossl_connect_common
+}
+{
+   openssl-rand-uninit_mod_inverse
+   Memcheck:Cond
+   fun:BN_mod_inverse
+   ...
+   obj:/lib/i686/cmov/libcrypto.so.0.9.8
+}
+{
+   openssl-rand-uninit_div
+   Memcheck:Cond
+   fun:BN_div
+   ...
+   obj:/lib/i686/cmov/libcrypto.so.0.9.8
+}
+{
+   openssl-uninit-padding
+   Memcheck:Cond
+   fun:RSA_padding_add_PKCS1_type_2
+   obj:/lib/i686/cmov/libcrypto.so.0.9.8
+}
+{
+   openssl-uninit-ucmp
+   Memcheck:Cond
+   fun:BN_ucmp
+   obj:/lib/i686/cmov/libcrypto.so.0.9.8
+}
+{
+   openssl-uninit-encrypt
+   Memcheck:Cond
+   obj:/lib/i686/cmov/libcrypto.so.0.9.8
+   fun:RSA_public_encrypt
+}
+{
+   openssl-uninit-ssl3_read_bytes
+   Memcheck:Cond
+   fun:ssl3_read_bytes
+   fun:ssl3_read
+   fun:SSL_read
+}
+{
+   openssl-uninit-get_finished
+   Memcheck:Cond
+   fun:ssl3_get_finished
+   fun:ssl3_connect
+   fun:SSL_connect
+   fun:ossl_connect_common
+}
+{
+   openssl-uninit-read_bytes
+   Memcheck:Cond
+   ...
+   fun:ossl_connect_common
+}
+{
+   openssl-value4-connect_common
+   Memcheck:Value4
+   ...
+   fun:ossl_connect_common
+}
+{
+   openssl-uninit-encrypt
+   Memcheck:Cond
+   ...
+   fun:RSA_public_encrypt
+}
+{
+   <supress_ini_value_4>
+   Memcheck:Value4
+   obj:/usr/lib/i686/cmov/libcrypto.so.0.9.8
+}
+{
+   <supress_parser_buffer>
+   Memcheck:Cond
+   fun:inflateReset2
+   fun:inflateInit2_
+   obj:/usr/lib/libz.so.1.2.3.4
+   obj:/usr/lib/libxml2.so.2.7.8
+   obj:/usr/lib/libxml2.so.2.7.8
+   fun:__xmlParserInputBufferCreateFilename
+   fun:xmlParserInputBufferCreateFilename
+   fun:xmlNewTextReaderFilename
+   fun:xmlReaderForFile
+   fun:axiom_xml_reader_create_for_file
+   fun:axis2_desc_builder_build_om
+   fun:axis2_conf_builder_populate_conf
+}
+{
+   <suppress_libcrypto>
+   Memcheck:Cond
+   ...
+   obj:/usr/lib/i686/cmov/libcrypto.so.0.9.8
+   ...
+}
+{
+   <suppress_libcrypto2>
+   Memcheck:Value4
+   ...
+   obj:/usr/lib/i686/cmov/libcrypto.so.0.9.8
+   ...
+}
+{
+   <suppress_libcrypto>
+   Memcheck:Param
+   ...
+   obj:/usr/lib/i686/cmov/libcrypto.so.0.9.8
+   ...
+}
+{
+   <suppress_libcurl_value4>
+   Memcheck:Value4
+   ...
+   obj:/usr/lib/libcurl.so.4.2.0
+   ...
+}
+{
+   <suppress_libcurl_cond>
+   Memcheck:Cond
+   ...
+   obj:/usr/lib/libcurl.so.4.2.0
+   ...
+}
+{
+   <suppress_libcurl_param>
+   Memcheck:Param
+   ...
+   obj:/usr/lib/libcurl.so.4.2.0
+   ...
+}
+{
+   <supress_sha1_block_data_order>
+   Memcheck:Cond
+   fun:sha1_block_data_order
+}
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   write(buf)
+   fun:__write_nocancel
+   fun:BIO_write
+   fun:ssl23_write_bytes
+   fun:ssl23_connect
+   fun:SSL_connect
+   obj:/usr/lib/libcurl.so.4.2.0
+   fun:Curl_ossl_connect
+   fun:Curl_ssl_connect
+   fun:Curl_http_connect
+   fun:Curl_protocol_connect
+   fun:Curl_connect
+   obj:/usr/lib/libcurl.so.4.2.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   write(buf)
+   fun:__write_nocancel
+   fun:BIO_write
+   obj:/usr/lib/i686/cmov/libcrypto.so.0.9.8
+   fun:BIO_ctrl
+   fun:ssl3_connect
+   fun:SSL_connect
+   fun:ssl23_connect
+   fun:SSL_connect
+   obj:/usr/lib/libcurl.so.4.2.0
+   fun:Curl_ossl_connect
+   fun:Curl_ssl_connect
+   fun:Curl_http_connect
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   write(buf)
+   fun:__write_nocancel
+   fun:BIO_write
+   fun:ssl3_write_pending
+   obj:/usr/lib/i686/cmov/libssl.so.0.9.8
+   fun:ssl3_write_bytes
+   fun:ssl3_write
+   fun:SSL_write
+   obj:/usr/lib/libcurl.so.4.2.0
+   fun:Curl_write
+   fun:Curl_add_buffer_send
+   fun:Curl_http
+   fun:Curl_do
+}
+

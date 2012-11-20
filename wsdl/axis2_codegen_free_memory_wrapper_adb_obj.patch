@@ -1,0 +1,15 @@
+Index: modules/codegen/src/org/apache/axis2/wsdl/template/c/StubSourceTemplate.xsl
+===================================================================
+--- modules/codegen/src/org/apache/axis2/wsdl/template/c/StubSourceTemplate.xsl	(revision 1398745)
++++ modules/codegen/src/org/apache/axis2/wsdl/template/c/StubSourceTemplate.xsl	(working copy)
+@@ -296,6 +296,10 @@
+                                         _</xsl:text><xsl:value-of select="@name"/>
+                                    </xsl:for-each><xsl:if test="input/param/@complextype">)</xsl:if>);
+                                     payload = <xsl:value-of select="substring-before($firstParam/@type, '_t*')"/>_serialize(<xsl:value-of select="$wrapper_adb_obj"/>, env, NULL, NULL, AXIS2_TRUE, NULL, NULL);
++                                    if (<xsl:value-of select="$wrapper_adb_obj"/>)
++                                    {
++                                        <xsl:value-of select="substring-before($firstParam/@type, '_t*')"/>_free(<xsl:value-of select="$wrapper_adb_obj"/>, env);
++                                    }
+                             }
+                            </xsl:when>
+                            <xsl:otherwise>

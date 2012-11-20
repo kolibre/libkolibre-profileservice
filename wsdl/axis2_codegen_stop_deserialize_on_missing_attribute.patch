@@ -1,0 +1,23 @@
+Index: modules/adb-codegen/src/org/apache/axis2/schema/template/CADBBeanTemplateSource.xsl
+===================================================================
+--- modules/adb-codegen/src/org/apache/axis2/schema/template/CADBBeanTemplateSource.xsl	(revision 1153421)
++++ modules/adb-codegen/src/org/apache/axis2/schema/template/CADBBeanTemplateSource.xsl	(working copy)
+@@ -1535,6 +1535,18 @@
+                         </xsl:otherwise>
+                       </xsl:choose>
+                     }
++                  <xsl:if test="not(@optional)">
++                    else if(!dont_care_minoccurs)
++                    {
++                        if(element_qname)
++                        {
++                            axutil_qname_free(element_qname, env);
++                        }
++                        /* this is not a nillable element*/
++                        AXIS2_LOG_ERROR(env->log, AXIS2_LOG_SI, "required attribute <xsl:value-of select="$CName"/> missing");
++                        return AXIS2_FAILURE;
++                    }
++                  </xsl:if>
+                   </xsl:otherwise>
+                   </xsl:choose>
+                 </xsl:when>
