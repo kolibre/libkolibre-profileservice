@@ -82,11 +82,7 @@ dnl -----------------------------------------------
 dnl check for log4cxx
 dnl -----------------------------------------------
 
-PKG_CHECK_MODULES(LOG4CXX, liblog4cxx >= 0.10.0, HAVE_LOG4CXX=yes, HAVE_LOG4CXX=no)
-
-if (test "x$HAVE_LOG4CXX" = "xno") then
-    AC_MSG_ERROR([**liblog4cxx >= 0.10.0 is needed to build libkolibre-daisyonline **])
-fi
+PKG_CHECK_MODULES(LOG4CXX, liblog4cxx >= 0.10.0)
 
 AC_SUBST(LOG4CXX_CFLAGS)
 AC_SUBST(LOG4CXX_LIBS)
@@ -95,11 +91,7 @@ dnl -----------------------------------------------
 dnl check for axis2c
 dnl -----------------------------------------------
 
-PKG_CHECK_MODULES(AXIS2C, axis2c >= 1.6.0, HAVE_AXIS2C=yes, HAVE_AXIS2C=no)
-
-if (test "x$HAVE_AXIS2C" = "xno") then
-    AC_MSG_ERROR([**libaxis2c >= 1.6.0 is needed to build kolibre-daisyonline **])
-fi
+PKG_CHECK_MODULES(AXIS2C, axis2c >= 1.6.0)
 
 AC_SUBST(AXIS2C_CFLAGS)
 AC_SUBST(AXIS2C_LIBS)
