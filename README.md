@@ -75,17 +75,17 @@ Copyright (C) 2012 Kolibre
 
 This file is part of libkolibre-profileservice.
 
-Kolibre-profileservice is free software: you can redistribute it and/or modify
+libkolibre-profileservice is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 2.1 of the License, or
 (at your option) any later version.
 
-Kolibre-profileservice is distributed in the hope that it will be useful,
+libkolibre-profileservice is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with kolibre-profileservice. If not, see <http://www.gnu.org/licenses/>.
+along with libkolibre-profileservice. If not, see <http://www.gnu.org/licenses/>.
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/74210a6e048b9545d378303cd5fe029d "githalytics.com")](http://githalytics.com/kolibre/libkolibre-clientcore)
