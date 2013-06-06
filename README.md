@@ -12,7 +12,7 @@ membership and contact information can be found at http://www.kolibre.org/
 
 What is libkolibre-profileservice?
 ---------------------------------
-libkolibre-profileservice is a library built as a client for fetching and setting remote
+Libkolibre-profileservice is a library built as a client for fetching and setting remote
 settings on a server. The library utilizes the wsdl found in the wsdl folder as
 protocol for the communication. The profile wsdl also supports checking for
 uppdates.
@@ -28,7 +28,7 @@ Type ./configure && make doxygen-doc to generate documentation.
 
 Platforms
 ---------------------------------
-libkolibre-profileservice has been tested with Linux Debian Squeeze and can be built
+Libkolibre-profileservice has been tested with Linux Debian Squeeze and can be built
 using dev packages from apt repositories.
 
 
@@ -75,12 +75,12 @@ Copyright (C) 2012 Kolibre
 
 This file is part of libkolibre-profileservice.
 
-libkolibre-profileservice is free software: you can redistribute it and/or modify
+Libkolibre-profileservice is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 2.1 of the License, or
 (at your option) any later version.
 
-libkolibre-profileservice is distributed in the hope that it will be useful,
+Libkolibre-profileservice is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Lesser General Public License for more details.
