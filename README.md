@@ -90,4 +90,3 @@ GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License
 along with libkolibre-profileservice. If not, see <http://www.gnu.org/licenses/>.
 
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/30bf70ab4efff4af42bbf6ef7fa07503 "githalytics.com")](http://githalytics.com/kolibre/libkolibre-profileservice)
